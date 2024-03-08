@@ -1,55 +1,72 @@
-<nav class="navbar bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
+<nav class="navbar bg-body-tertiary shadow sticky-top" data-bs-theme="dark">
+    <div class="container-fluid justify-content-center">
         <a class="navbar-brand fs-2" href="#">
             To Do App
         </a>
-        <button href="" class="nav-link">Get Token</button>
     </div>
 </nav>
 <main>
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-5 bg-secondary m-3 p-5">
+                <div class="col-5 bg-body-secondary m-3 p-5">
                     <p class="display-5 text-dark fw-normal">Add Task</p>
                     <form #ngForm (ngSubmit)="onSubmit_create_task()">
                         <div class="p-3 my-2 lead">
-                            <label for="">Task Name</label>
-                            <input [(ngModel)]="create_data.task_name" name="task_name" type="text"
+                            <label for="task_name">Task Name</label>
+                            <input [(ngModel)]="create_data.task_name" name="task_name" id="task_name" type="text"
                                 class="form-control w-100" placeholder="Add New Task">
                         </div>
                         <div class="p-3 my-2 lead">
-                            <label for="">Task Description</label>
-                            <input [(ngModel)]="create_data.task_desc" name="task_desc" type="text"
+                            <label for="task_desc">Task Description</label>
+                            <input [(ngModel)]="create_data.task_desc" name="task_desc" id="task_desc" type="text"
                                 class="form-control w-100" placeholder="Add New Task">
                         </div>
                         <div class="p-3 my-2 lead">
-                            <label for="">Date</label>
-                            <input [(ngModel)]="create_data.date_added" name="date_added" type="date" class="form-control w-100"
-                                placeholder="Add New Task">
+                            <label for="date_added">Date</label>
+                            <input [(ngModel)]="create_data.date_added" name="date_added" id="date_added" type="date"
+                                class="form-control w-100" placeholder="Add New Task">
                         </div>
                         <div class="m-0 p-3 text-center">
                             <input type="submit" class="w-100 btn btn-dark">
                         </div>
                     </form>
                 </div>
-                <div class="col-6 bg-secondary m-3 p-5">
+                <div class="col-6 bg-body-secondary m-3 p-5">
                     <p class="display-6 text-dark fw-normal">Task To Be Completed</p>
                     <div class="p-3 my-2" *ngFor="let i of data">
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title fs-4">{{i.task_name}}</h5>
                                 <p class="card-text lead fw-normal">{{i.task_desc}}</p>
-                                <a href=" #" class="btn btn-secondary m-2">Update</a>
+                                <button (click)="update_task_fn(i.id)" class="btn btn-secondary m-2">Update</button>
                                 <a href="#" class="btn btn-dark m-2">{{i.date_added}}</a>
-                                <a href="#" class="btn btn-dark m-2">Completed: {{ i.completed}}</a>
+                                <button (click)="change_completed_status(i.id)" class="btn btn-dark m-2">Completed: {{
+                                    i.completed}}</button>
+                                <button (click)="delete_task(i.id)" class="btn btn-danger">Delete Task</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-3 justify-content-center">
+                <div class="col-10 bg-body-secondary p-4">
+                    <p class="display-5">Completed Tasks</p>
+                    <div class="p-3 my-2" *ngFor="let i of completed_data">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title fs-4 text-decoration-line-through">{{i.task_name}}</h5>
+                                <p class="card-text lead fw-normal text-decoration-line-through">{{i.task_desc}}</p>
+                                <button (click)="update_task_fn(i.id)" class="btn btn-secondary m-2">Update</button>
+                                <a href="#" class="btn btn-dark m-2">{{i.date_added}}</a>
+                                <button (click)="change_completed_status(i.id)" class="btn btn-dark m-2">Completed: {{
+                                    i.completed}}</button>
+                                <button (click)="delete_task(i.id)" class="btn btn-danger">Delete Task</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
 </main>
-<router-outlet></router-outlet>

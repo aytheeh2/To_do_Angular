@@ -1,1 +1,22 @@
-<p>update-task works!</p>
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-6 p-4">
+            <p class="display-5">Update Task</p>
+            <form (ngSubmit)="onSubmit()">
+                <label for="task_name" class="lead my-2 p-1">Task Name</label>
+                <input type=" text" [(ngModel)]="data.task_name" name="task_name" class="form-control" id="task_name">
+                <label for="task_name" class="lead my-2 p-1">Task Description</label>
+                <input type=" text" [(ngModel)]="data.task_desc" name="task_desc" class="form-control" id="task_desc">
+                <label for="task_name" class="lead my-2 p-1">Date</label>
+                <input type="date" [(ngModel)]="data.date_added" name="date_added" class="form-control" id="date_added">
+                <select [(ngModel)]="data.completed" class="form-label w-100 fs-6 my-3 p-3" name="completed"
+                    id="completed">
+                    <option value="True">Completed</option>
+                    <option value="False">Incomplete</option>
+                </select><br>
+                <button [routerLink]="['']" type="button" class="btn btn-dark my-1 me-2">Go Back</button>
+                <input type="submit" class="btn btn-dark my-1 me-2">
+            </form>
+        </div>
+    </div>
+</div>
