@@ -1,0 +1,55 @@
+<nav class="navbar bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-2" href="#">
+            To Do App
+        </a>
+        <button href="" class="nav-link">Get Token</button>
+    </div>
+</nav>
+<main>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-5 bg-secondary m-3 p-5">
+                    <p class="display-5 text-dark fw-normal">Add Task</p>
+                    <form #ngForm (ngSubmit)="onSubmit_create_task()">
+                        <div class="p-3 my-2 lead">
+                            <label for="">Task Name</label>
+                            <input [(ngModel)]="create_data.task_name" name="task_name" type="text"
+                                class="form-control w-100" placeholder="Add New Task">
+                        </div>
+                        <div class="p-3 my-2 lead">
+                            <label for="">Task Description</label>
+                            <input [(ngModel)]="create_data.task_desc" name="task_desc" type="text"
+                                class="form-control w-100" placeholder="Add New Task">
+                        </div>
+                        <div class="p-3 my-2 lead">
+                            <label for="">Date</label>
+                            <input [(ngModel)]="create_data.date_added" name="date_added" type="date" class="form-control w-100"
+                                placeholder="Add New Task">
+                        </div>
+                        <div class="m-0 p-3 text-center">
+                            <input type="submit" class="w-100 btn btn-dark">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-6 bg-secondary m-3 p-5">
+                    <p class="display-6 text-dark fw-normal">Task To Be Completed</p>
+                    <div class="p-3 my-2" *ngFor="let i of data">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title fs-4">{{i.task_name}}</h5>
+                                <p class="card-text lead fw-normal">{{i.task_desc}}</p>
+                                <a href=" #" class="btn btn-secondary m-2">Update</a>
+                                <a href="#" class="btn btn-dark m-2">{{i.date_added}}</a>
+                                <a href="#" class="btn btn-dark m-2">Completed: {{ i.completed}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</main>
+<router-outlet></router-outlet>

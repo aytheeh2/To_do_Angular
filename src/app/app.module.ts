@@ -3,16 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { DeleteTaskComponent } from './delete-task/delete-task.component';
+import { UpdateTaskComponent } from './update-task/update-task.component';
+import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { APICALLService } from './services/apicall.service';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DeleteTaskComponent,
+    UpdateTaskComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [APICALLService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
